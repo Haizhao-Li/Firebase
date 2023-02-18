@@ -18,6 +18,13 @@ class _LoginPageState extends State<LoginPage> {
      * 
      * if isSignIn = true => openHome(displayName)
      */
+    // Fluttertoast.showToast(msg: 'Back button pressed!');
+
+    bool isSuccess = await authProvider.handleGoogleSignIn();
+    String displayName = await authProvider.getUserDisplayName();
+    if (isSuccess) {
+      openHome(displayName);
+    }
   }
 
   Future<bool> onBackPress() {

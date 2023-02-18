@@ -203,28 +203,37 @@ class _ChatListPageState extends State<ChatListPage> {
                                            * TODO: Implement UI
                                            */
                                           return TextButton(
-                                            onPressed: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          ChatPage(
-                                                            peerId: userChat.id,
-                                                            peerAvatar: userChat
-                                                                .photoUrl,
-                                                            peerNickname:
-                                                                userChat
-                                                                    .displayName,
-                                                            userAvatar:
-                                                                FirebaseService()
-                                                                    .firebaseAuth
-                                                                    .currentUser!
-                                                                    .photoURL!,
-                                                          )));
-                                            },
-                                            child: Center(
-                                                child: Text('Index $index')),
-                                          );
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ChatPage(
+                                                              peerId:
+                                                                  userChat.id,
+                                                              peerAvatar:
+                                                                  userChat
+                                                                      .photoUrl,
+                                                              peerNickname:
+                                                                  userChat
+                                                                      .displayName,
+                                                              userAvatar:
+                                                                  FirebaseService()
+                                                                      .firebaseAuth
+                                                                      .currentUser!
+                                                                      .photoURL!,
+                                                            )));
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Center(
+                                                      child: Image.network(
+                                                          userChat.photoUrl)),
+                                                  Center(
+                                                      child: Text(
+                                                          userChat.displayName))
+                                                ],
+                                              ));
                                         });
                                   } else {
                                     return const Center(
